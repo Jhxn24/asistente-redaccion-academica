@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    btnHumanizar.textContent = "Procesando con Gemini...";
+    btnHumanizar.textContent = "Procesando...";
     btnHumanizar.disabled = true;
     btnCopiar.disabled = true;
     outputTexto.value = "";
