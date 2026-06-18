@@ -73,6 +73,14 @@ textarea:focus {
 .action-center {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.output-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 button {
