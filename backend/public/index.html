@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Humanizador de Textos</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Humanizador de Textos IA</h1>
+        <p>
+          Convierte redacciones generadas por IA en texto con métricas humanas.
+        </p>
+      </header>
+
+      <main class="grid-layout">
+        <div class="panel">
+          <label for="texto-ia">Texto Original:</label>
+          <textarea
+            id="texto-ia"
+            placeholder="Pega aquí el párrafo detectado como IA..."
+          ></textarea>
+        </div>
+
+        <div class="action-center">
+          <button id="btn-humanizar">Humanizar Texto</button>
+        </div>
+
+        <div class="panel">
+          <label for="texto-humano">Resultado "Texto corregido":</label>
+          <textarea
+            id="texto-humano"
+            readonly
+            placeholder="Aquí aparecerá el texto listo para tu tesis..."
+          ></textarea>
+        </div>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

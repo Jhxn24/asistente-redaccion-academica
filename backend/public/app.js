@@ -6,17 +6,22 @@ document.addEventListener("DOMContentLoaded", () => {
   btnHumanizar.addEventListener("click", async () => {
     const textoOriginal = inputTexto.value.trim();
 
-    if (!textoOriginal) return alert("Por favor, ingresa un texto.");
+    if (!textoOriginal) {
+      alert("Por favor, pega un texto generado por IA primero.");
+      return;
+    }
 
-    btnHumanizar.textContent = "Procesando...";
+    btnHumanizar.textContent = "Procesando con Gemini...";
     btnHumanizar.disabled = true;
+    outputTexto.value = "";
 
     try {
-      // Hacemos la petición a nuestra propia API
       const respuesta = await fetch("/api/humanizar", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ textoOriginal }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ textoOriginal: textoOriginal }),
       });
 
       const data = await respuesta.json();
@@ -24,11 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (respuesta.ok) {
         outputTexto.value = data.textoHumanizado;
       } else {
-        outputTexto.value = `Error: ${data.error}`;
+        outputTexto.value = `Error del servidor: ${data.error}`;
       }
     } catch (error) {
-      console.error("Error en la petición:", error);
-      outputTexto.value = "Error al conectar con el servidor.";
+      console.error("Error al conectar:", error);
+      outputTexto.value =
+        "Error crítico al intentar conectar con el servidor. Verifica que node server.js esté corriendo.";
     } finally {
       btnHumanizar.textContent = "Humanizar Texto";
       btnHumanizar.disabled = false;
